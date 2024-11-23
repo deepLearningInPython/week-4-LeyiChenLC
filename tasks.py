@@ -93,8 +93,8 @@ word_frequencies = {words: tokens.count(words) for words in tokens if tokens.cou
 # Your code here:
 # -----------------------------------------------
 def token_counts(string: str, k: int = 1) -> dict:
-    tokens = [words.strip(".,!?") for words in string.split()]
-    word_frequencies = {words: tokens.count(words) for words in tokens if tokens.count(words) >= k}
+    tokens = [words.strip("!?@#$%^&*().,") for words in string.split()]
+    word_frequencies = {words: tokens.count(words) for words in tokens if tokens.count(words) > k}
     return word_frequencies
 
 
@@ -127,8 +127,7 @@ all(text_hist[key] == value for key, value in token_counts(text).items())
 
 # Your code here:
 # -----------------------------------------------
-
-token_to_id = {words: id for id, words in enumerate(tokens)}
+token_to_id = {word.lower(): id for id, word in enumerate(sorted(set(word.lower() for word in tokens)))}
 
 # Expected output: {'dog': 0, 'quick': 1, 'fox': 2, 'the': 3, 'over': 4, 'lazy': 5, 'brown': 6, 'jumps': 7}
 print(token_to_id)
@@ -152,7 +151,6 @@ assert all(id_to_token[token_to_id[key]]==key for key in token_to_id) and all(to
 # -----------------------------------------------
 
 
-
 # Task 7: Define a function that will take a list of strings ('documents'), determines all the
 #   unique tokens across all documents, and returns two dictionaries: one (token2int) that maps 
 #   each unique token to a unique integer, and a dictionary (int2token) that maps each integer
@@ -164,9 +162,9 @@ def make_vocabulary_map(documents: list) -> tuple:
     # Hint: use your tokenize function
     all_text = " ".join(documents)
     unique_tokens = tokenize(all_text)
-    token_to_id = {words: id for id, words in enumerate(unique_tokens)}
+    token_to_id = {word.lower(): id for id, word in enumerate(sorted(set(word.lower() for word in tokens)))}
     id_to_token  = {id: word for word, id in token_to_id.items()}
-    return  token_to_id, id_to_token
+    return token_to_id, id_to_token
 
 # Test
 t2i, i2t = make_vocabulary_map([text])
