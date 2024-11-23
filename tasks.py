@@ -94,7 +94,7 @@ word_frequencies = {words: tokens.count(words) for words in tokens if tokens.cou
 # -----------------------------------------------
 def token_counts(string: str, k: int = 1) -> dict:
     tokens = [words.strip("!?@#$%^&*().,") for words in string.split()]
-    word_frequencies = {words: tokens.count(words) for words in tokens if tokens.count(words) > k}
+    word_frequencies = {words: tokens.count(words) for words in tokens if tokens.count(words) >= k}
     return word_frequencies
 
 
