@@ -194,8 +194,8 @@ def tokenize_and_encode(documents: list) -> list:
     return encoded_doc, token_to_id, id_to_token
 
 # Test:
-enc, t2i, i2t = tokenize_and_encode([text, 'What a luck we had today!'])
-" | ".join([" ".join(i2t[i] for i in e) for e in enc]) == 'the quick brown fox jumps over the lazy dog | what a luck we had today'
+#enc, t2i, i2t = tokenize_and_encode([text, 'What a luck we had today!'])
+#" | ".join([" ".join(i2t[i] for i in e) for e in enc]) == 'the quick brown fox jumps over the lazy dog | what a luck we had today'
 # -----------------------------------------------
 
 
@@ -292,7 +292,7 @@ np.all(sigmoid(np.log([1, 1/3, 1/7])) == np.array([1/2, 1/4, 1/8]))
 # Your code here:
 # -----------------------------------------------
 #def rnn_layer(w: np.array, list_of_sequences: list[np.array], sigma=sigmoid ) -> np.array:
-    pass # Your code
+#    pass # Your code
 
 # Test
 #np.random.seed(10)
@@ -327,7 +327,7 @@ np.all(sigmoid(np.log([1, 1/3, 1/7])) == np.array([1/2, 1/4, 1/8]))
 # Your code here:
 # -----------------------------------------------
 #def rnn_loss(w: np.array, w, list_of_sequences: list[np.array], y: np.array) -> np.float64:
-    pass # Your code
+#    pass # Your code
 
 # Test:
 #y = np.array([(X @ np.arange(1,4))[0] for X in list_of_sequences])
